@@ -66,10 +66,12 @@ jobs:
       
       - run: npm run-script android-apk && cd android && chmod  777 ./gradlew && ./gradlew --no-daemon assembleDebug
       
+      - run: cd /d "android\app\build\outputs\apk" && dir /s
+      
       - name: Release prebuilt
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "android/app/build/outputs/apk/debug/app-debug-${{ github.ref_name }}.apk"
+          artifacts: "android/app/build/outputs/apk/debug/app-debug.apk"
           allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}
           
