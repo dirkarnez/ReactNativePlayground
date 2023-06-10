@@ -62,6 +62,8 @@ jobs:
 
       - run: npm install
       
+      - run: mkdir android\app\src\main\assets
+      
       - run: npm run-script android-apk && cd android && chmod  777 ./gradlew && ./gradlew --no-daemon assembleDebug
       
       - name: Release prebuilt
